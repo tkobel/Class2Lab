@@ -8,8 +8,30 @@ import java.util.GregorianCalendar;
  * @author Tracy
  */
 public class WelcomeService {
-    private Calendar date = new GregorianCalendar();
+    private Calendar date;
+    private String name;
     
+    public WelcomeService(String name) {
+        setName(name);
+        setDate(date);
+    }
+
+    public Calendar getDate() {
+        return date;
+    }
+
+    public void setDate(Calendar date) {
+        this.date = date;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+        
     private String getTimeDescription(Calendar date) {
         Calendar endOfMorning = new GregorianCalendar();
         endOfMorning.set(Calendar.HOUR_OF_DAY, 12);
@@ -25,5 +47,10 @@ public class WelcomeService {
         else {
             return "afternoon";
         }
+    }
+    
+    public String welcomeMessage() {
+        return "Good " + getTimeDescription(getDate()) + ", " + getName() +
+                ". Welcome!";
     }
 }
